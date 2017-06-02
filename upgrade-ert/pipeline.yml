@@ -24,19 +24,12 @@ resource_types:
     tag: latest-final
 
 resources:
-- name: pcf-pipelines-tarball
-  type: pivnet
+- name: pcf-pipelines
+  type: git
   source:
-    api_token: {{pivnet_token}}
-    product_slug: pcf-automation
-    product_version: v0.6.0
-
-- name: tool-om
-  type: github-release
-  source:
-    user: pivotal-cf
-    repository: om
-    access_token: {{github_token}}
+    uri: git@github.com:pivotal-cf/pcf-pipelines.git
+    branch: master
+    private_key: {{git_private_key}}
 
 - name: elastic-runtime
   type: pivnet
@@ -44,17 +37,8 @@ resources:
   source:
     api_token: {{pivnet_token}}
     product_slug: elastic-runtime
-    product_version: 1.9.*
+    product_version: 1\.10\.*
     sort_by: semver
-
-- name: stemcell-downloader
-  type: github-release
-  source:
-    user: pivotal-cf
-    repository: pcf-product-stemcell-downloader
-    access_token: {{github_token}}
-    globs:
-    - stemcell-downloader-linux
 
 - name: schedule
   type: time
@@ -83,17 +67,7 @@ jobs:
       params:
         globs:
         - "*pivotal"
-    - do:
-      - get: pcf-pipelines-tarball
-      - task: unpack-tarball
-        <<: *unpack_tarball_config
-    - get: tool-om
-      params:
-        globs:
-        - om-linux
-    - get: stemcell-downloader
-      params:
-        globs: [stemcell-downloader-linux]
+    - get: pcf-pipelines
 
   - task: wait-opsman-clear
     file: pcf-pipelines/tasks/wait-opsman-clear/task.yml
@@ -108,7 +82,7 @@ jobs:
       OPSMAN_USERNAME: {{opsman_admin_username}}
       OPSMAN_PASSWORD: {{opsman_admin_password}}
       OPSMAN_URI: {{opsman_uri}}
-      PIVNET_PRODUCT_NAME: elastic-runtime
+      TILE_UPLOAD_TIMEOUT: {{tile_upload_timeout}}
   - task: stage-tile
     file: pcf-pipelines/tasks/stage-product/task.yml
     params:
@@ -132,19 +106,3 @@ jobs:
       OPSMAN_USERNAME: {{opsman_admin_username}}
       OPSMAN_PASSWORD: {{opsman_admin_password}}
       OPSMAN_URI: {{opsman_uri}}
-      OPSMAN_TIMEOUT: {{opsman_timeout_seconds}}
-
-unpack_tarball_config: &unpack_tarball_config
-  config:
-    platform: linux
-    image_resource:
-      type: docker-image
-      source:
-        repository: cloudfoundry/cflinuxfs2
-    inputs:
-    - name: pcf-pipelines-tarball
-    outputs:
-    - name: pcf-pipelines
-    run:
-     path: sh
-     args: ["-c", "tar -xvf pcf-pipelines-tarball/*.tgz"]

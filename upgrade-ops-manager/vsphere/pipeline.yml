@@ -20,33 +20,12 @@ resource_types:
     tag: latest-final
 
 resources:
-- name: govc
-  type: github-release
+- name: pcf-pipelines
+  type: git
   source:
-    user: vmware
-    repository: govmomi
-    access_token: {{github_token}}
-
-- name: tool-om
-  type: github-release
-  source:
-    user: pivotal-cf
-    repository: om
-    access_token: {{github_token}}
-
-- name: tool-pivnet-cli
-  type: github-release
-  source:
-    user: pivotal-cf
-    repository: pivnet-cli
-    access_token: {{github_token}}
-
-- name: pcf-pipelines-tarball
-  type: pivnet
-  source:
-    api_token: {{pivnet_token}}
-    product_slug: pcf-automation
-    product_version: v0.6.0
+    uri: git@github.com:pivotal-cf/pcf-pipelines.git
+    branch: master
+    private_key: {{git_private_key}}
 
 - name: pivnet-opsmgr
   type: pivnet
@@ -81,17 +60,7 @@ jobs:
       passed: [regulator]
       params:
         globs: ["*.ova"]
-    - do:
-      - get: pcf-pipelines-tarball
-      - task: unpack-tarball
-        <<: *unpack_tarball_config
-    - get: govc
-    - get: tool-om
-      params:
-        globs: ["*linux*"]
-    - get: tool-pivnet-cli
-      params:
-        globs: ["*linux*"]
+    - get: pcf-pipelines
 
   - task: wait-opsman-clear
     file: pcf-pipelines/tasks/wait-opsman-clear/task.yml
@@ -127,13 +96,14 @@ jobs:
       GOVC_DATASTORE: {{vcenter_datastore}}
       GOVC_URL: {{vcenter_url}}
       OPSMAN_IP: {{opsman_ip}}
+      OPSMAN_URI: {{opsman_uri}}
       NETMASK: {{netmask}}
       GATEWAY: {{gateway}}
       DNS: {{dns}}
       NTP: {{ntp}}
       OPSMAN_NETWORK: {{opsman_network}}
       OPSMAN_VM_FOLDER: {{opsman_vm_folder}}
-      OPSMAN_ADMIN_PASSWORD: {{opsman_admin_password}}
+      OPSMAN_SSH_PASSWORD: {{opsman_ssh_password}}
 
   - task: import-opsmgr
     file: pcf-pipelines/tasks/import-opsmgr-settings/task.yml
@@ -157,26 +127,9 @@ jobs:
       OPSMAN_PASSWORD: {{opsman_admin_password}}
       OPSMAN_URI: {{opsman_uri}}
 
-      # todo discuss the order for calling this task
   - task: apply-changes
     file: pcf-pipelines/tasks/apply-changes/task.yml
     params:
       OPSMAN_USERNAME: {{opsman_admin_username}}
       OPSMAN_PASSWORD: {{opsman_admin_password}}
       OPSMAN_URI: {{opsman_uri}}
-      OPSMAN_TIMEOUT: {{opsman_timeout_seconds}}
-
-unpack_tarball_config: &unpack_tarball_config
-  config:
-    platform: linux
-    image_resource:
-      type: docker-image
-      source:
-        repository: cloudfoundry/cflinuxfs2
-    inputs:
-    - name: pcf-pipelines-tarball
-    outputs:
-    - name: pcf-pipelines
-    run:
-     path: sh
-     args: ["-c", "tar -xvf pcf-pipelines-tarball/*.tgz"]

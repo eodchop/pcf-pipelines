@@ -16,19 +16,20 @@
 
 function main() {
 
-  chmod +x tool-om/om-linux
-  CMD_PATH="tool-om/om-linux"
-
   local cwd
   cwd="${1}"
 
   local product
   product="$(ls -1 "${cwd}"/pivnet-product/*.pivotal)"
+  if [ -z "${TILE_UPLOAD_TIMEOUT}" ]; then 
+    export TILE_UPLOAD_TIMEOUT=1800 
+  fi
 
-  ./${CMD_PATH} --target "${OPSMAN_URI}" \
+  om-linux --target "https://${OPSMAN_URI}" \
      --skip-ssl-validation \
      --username "${OPSMAN_USERNAME}" \
      --password "${OPSMAN_PASSWORD}" \
+     --request-timeout ${TILE_UPLOAD_TIMEOUT} \
      upload-product \
      --product ${product}
 }

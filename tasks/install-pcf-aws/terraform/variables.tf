@@ -2,9 +2,9 @@ variable "aws_access_key" {}
 variable "aws_secret_key" {}
 variable "aws_key_name" {}
 variable "aws_cert_arn" {}
-variable "rds_db_username" {}
-variable "rds_db_password" {}
-variable "environment" {}
+variable "db_master_username" {}
+variable "db_master_password" {}
+variable "prefix" {}
 variable "opsman_ami" {}
 variable "amis_nat" {}
 variable "aws_region" {}

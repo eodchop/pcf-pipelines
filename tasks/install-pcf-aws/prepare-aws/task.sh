@@ -1,13 +1,18 @@
 #!/bin/bash
+
 set -ex
-CWD=$(pwd)
-cd pcf-pipelines/tasks/install-pcf-aws/terraform/
 
-terraform plan
+ami=$(cat ami/ami)
 
-set +e
-terraform apply
-ret_code=$?
+terraform plan \
+  -state terraform-state/terraform.tfstate \
+  -var "opsman_ami=${ami}" \
+  -var "db_master_username=${DB_MASTER_USERNAME}" \
+  -var "db_master_password=${DB_MASTER_PASSWORD}" \
+  -var "prefix=${TERRAFORM_PREFIX}" \
+  -out terraform.tfplan \
+  pcf-pipelines/tasks/install-pcf-aws/terraform
 
-cp terraform.tfstate $CWD/terraform-state/terraform.tfstate
-exit $ret_code
+terraform apply \
+  -state-out terraform-state-output/terraform.tfstate \
+  terraform.tfplan

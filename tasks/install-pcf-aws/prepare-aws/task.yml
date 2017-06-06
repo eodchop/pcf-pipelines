@@ -7,17 +7,18 @@ image_resource:
     repository: czero/cflinuxfs2
 inputs:
   - name: pcf-pipelines 
-outputs:
   - name: terraform-state
+  - name: ami
+outputs:
+  - name: terraform-state-output
 params:
+  DB_MASTER_USERNAME:
+  DB_MASTER_PASSWORD:
+  TERRAFORM_PREFIX:
   TF_VAR_aws_access_key:
   TF_VAR_aws_secret_key:
   TF_VAR_aws_key_name:
   TF_VAR_aws_cert_arn:
-  TF_VAR_rds_db_username:
-  TF_VAR_rds_db_password:
-  TF_VAR_environment:
-  TF_VAR_opsman_ami:
   TF_VAR_amis_nat:
   TF_VAR_aws_region:
   TF_VAR_az1:

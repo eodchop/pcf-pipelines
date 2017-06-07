@@ -84,11 +84,7 @@ NETWORK_CONFIGURATION=$(cat <<-EOF
     },
     {
       "name": "$SERVICES_NETWORK_NAME",
-<<<<<<< HEAD
-      "service_network": false,
-=======
       "service_network": $IS_SERVICE_NETWORK,
->>>>>>> 53169d15a0ddd321ea7dd7e80c85bc00c3ec1796
       "subnets": [
         {
           "iaas_identifier": "$SERVICES_VCENTER_NETWORK",

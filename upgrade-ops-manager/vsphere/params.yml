@@ -36,3 +36,4 @@ ntp: CHANGEME
 opsman_network: CHANGEME
 iaas_type: vsphere
 git_private_key:
+opsman_export_timeout: CHANGEME       

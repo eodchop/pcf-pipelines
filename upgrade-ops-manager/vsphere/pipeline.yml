@@ -97,6 +97,8 @@ jobs:
         OPSMAN_PASSWORD: {{opsman_admin_password}}
         OPSMAN_URI: {{opsman_uri}}
         OPSMAN_SETTINGS_FILENAME: installation.zip
+        OPSMAN_EXPORT_TIMEOUT: {{opsman_export_timeout}}
+
     - task: exported-opsmgr-diagnostic-report
       file: pcf-pipelines/tasks/export-opsmgr-diagnostic-report/task.yml
       params:

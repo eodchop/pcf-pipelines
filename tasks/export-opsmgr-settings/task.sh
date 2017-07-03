@@ -25,7 +25,7 @@ function main() {
      --skip-ssl-validation \
      --username "${OPSMAN_USERNAME}" \
      --password "${OPSMAN_PASSWORD}" \
-     --request-timeout "${OPSMAN_EXPORT_TIMEOUT}  \
+     --request-timeout "${OPSMAN_EXPORT_TIMEOUT}"  \
      export-installation \
      --output-file "${cwd}/opsmgr-settings/${OPSMAN_SETTINGS_FILENAME}"
 }

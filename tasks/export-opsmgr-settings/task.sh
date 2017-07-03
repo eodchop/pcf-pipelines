@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eu
+set -exu
 
 # Copyright 2017-Present Pivotal Software, Inc. All rights reserved.
 #

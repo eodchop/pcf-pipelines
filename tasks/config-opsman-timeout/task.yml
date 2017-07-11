@@ -7,13 +7,11 @@ image_resource:
   source: {repository: czero/cflinuxfs2}
 
 params:
-  OPS_MGR_HOST:
-  OPS_MGR_USR:
-  OPS_MGR_PWD:
-  OM_DECRYPTION_PWD:
+  OPSPW:
+  OPSMANIP:
 
 inputs:
   - name: pcf-pipelines
 
 run:
-  path: pcf-pipelines/tasks/config-opsman/task.sh
+  path: pcf-pipelines/tasks/config-opsman-timeout/task.sh

@@ -1,5 +1,5 @@
 #!/usr/bin/expect
-
+set -xeu
 
 set timeout 50
 

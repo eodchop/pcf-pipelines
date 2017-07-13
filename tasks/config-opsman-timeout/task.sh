@@ -1,9 +1,7 @@
 #!/usr/bin/expect
-set -xeu
-
 set timeout 50
-
-spawn ssh ubuntu@$env(OPSMANIP)
+spawn apt-get install ssh expect -y
+spawn ssh -o "StrictHostKeyChecking=no" ubuntu@$env(OPSMANIP)
 
 expect "*assword:"
 send "$env(OPSPW)\r";

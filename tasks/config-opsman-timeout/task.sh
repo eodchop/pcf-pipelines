@@ -1,6 +1,10 @@
 #!/usr/bin/expect
 set timeout 50
-spawn apt-get install ssh expect -y
+spawn bash
+expect "*#"
+send "apt-get update\r";
+expect "*#"
+send "apt-get install ssh expect -y\r";
 spawn ssh -o "StrictHostKeyChecking=no" ubuntu@$env(OPSMANIP)
 
 expect "*assword:"

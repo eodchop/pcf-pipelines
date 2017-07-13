@@ -1,10 +1,9 @@
-#!/usr/bin/expect
+#!/bin/bash
+apt-get update -y
+apt-get install ssh expect -y
+
+/usr/bin/expect << EOD
 set timeout 50
-spawn bash
-expect "*#"
-send "apt-get update\r";
-expect "*#"
-send "apt-get install ssh expect -y\r";
 spawn ssh -o "StrictHostKeyChecking=no" ubuntu@$env(OPSMANIP)
 
 expect "*assword:"
@@ -17,3 +16,4 @@ expect "*~#"
 send "sed -i 's/1800/6000/g' /home/tempest-web/tempest/web/config/thin.production.yml\r";
 expect "*~#"
 send "shutdown -r now\r"
+EOD

@@ -28,6 +28,8 @@ params:
   CF_PASSWORD:
   DEMO_SPACE:
   DEMO_ORG: 
-   
+  DEMO_USER:
+  DEMO_PW: 
+
 run:
   path: pcf-pipelines/tasks/add-demo-org/task.sh

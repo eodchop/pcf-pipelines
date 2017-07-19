@@ -1,15 +1,17 @@
 #!/bin/bash -e
 
-j=$(om -t https://$OPSMANIP -k -u $OPSMAN_USERNAME -p $OPSPW curl -s -p "/api/v0/staged/products/")
+set -ex
+
+j=$(om-linux -t https://$OPSMANIP -k -u $OPSMAN_USERNAME -p $OPSPW curl -s -p "/api/v0/staged/products/")
 mysql=$(jq -r '.[].guid' <<< $j | grep -iw "p-mysql-*")
 
-j=$(om -t https://$OPSMANIP -k -u $OPSMAN_USERNAME -p $OPSPW curl -s -p "/api/v0/staged/products/")
+j=$(om-linux -t https://$OPSMANIP -k -u $OPSMAN_USERNAME -p $OPSPW curl -s -p "/api/v0/staged/products/")
 director=$(jq -r '.[].guid' <<< $j | grep -iw "p-bosh*")
 
-j=$(om -t https://$OPSMANIP -k -u $OPSMAN_USERNAME -p $OPSPW curl -s -p "/api/v0/deployed/products/$director/static_ips/")
+j=$(om-linux -t https://$OPSMANIP -k -u $OPSMAN_USERNAME -p $OPSPW curl -s -p "/api/v0/deployed/products/$director/static_ips/")
 dirip=$(jq -r '.[].ips' <<< $j | grep '[\d+\.\d+\.\d+\.\d+]')
 
-j=$(om -t https://$OPSMANIP -k -u $OPSMAN_USERNAME -p $OPSPW curl -s -p "/api/v0/security/root_ca_certificate") &> /dev/null
+j=$(om-linux -t https://$OPSMANIP -k -u $OPSMAN_USERNAME -p $OPSPW curl -s -p "/api/v0/security/root_ca_certificate") &> /dev/null
 cert=$(jq -r '.root_ca_certificate_pem' <<< $j)
 
 #echo "$cert" >> root_ca_pem

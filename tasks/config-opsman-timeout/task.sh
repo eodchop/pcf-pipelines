@@ -17,3 +17,11 @@ send "sed -i 's/1800/6000/g' /home/tempest-web/tempest/web/config/thin.productio
 expect "*~#"
 send "shutdown -r now\r"
 EOD
+  
+printf "Waiting for %s to come up" "$OPSMAN_URI"
+  until $(curl --output /dev/null --silent --head --fail -k https://${OPSMAN_URI}); do
+    printf '.'
+    sleep 5
+  done
+printf '\n'
+

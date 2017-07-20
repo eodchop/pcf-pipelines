@@ -1,5 +1,5 @@
 #!/bin/bash
-#apt-get update -y
+apt-get update -n
 apt-get install ssh expect curl -y
 
 /usr/bin/expect << EOD

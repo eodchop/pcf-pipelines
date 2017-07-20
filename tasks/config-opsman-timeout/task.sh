@@ -28,6 +28,7 @@ expect "*$\*"
 send "sudo reboot\r";
 expect "*ubuntu:"
 send "$OPSPW\r";
+expect "*$"
 EOD
 
   

@@ -27,6 +27,7 @@ function main() {
      --password "${OPSMAN_PASSWORD}" \
      --request-timeout "${OPSMAN_EXPORT_TIMEOUT}"  \
      export-installation \
+     --decryption-passphrase "${OPSMAN_PASSPHRASE}" \
      --output-file "${cwd}/opsmgr-settings/${OPSMAN_SETTINGS_FILENAME}"
 }
 

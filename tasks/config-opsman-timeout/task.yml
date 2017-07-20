@@ -10,7 +10,8 @@ params:
   OPSPW:
   OPSMANIP:
   OPSMAN_URI:
-          
+  OPSMAN_PASSPHRASE:        
+
 inputs:
   - name: pcf-pipelines
 

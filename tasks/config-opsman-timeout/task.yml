@@ -9,7 +9,8 @@ image_resource:
 params:
   OPSPW:
   OPSMANIP:
-
+  OPSMAN_URI:
+          
 inputs:
   - name: pcf-pipelines
 

@@ -31,7 +31,6 @@ params:
   OPSMAN_URI:
   OPSMAN_SETTINGS_FILENAME:
   OPSMAN_EXPORT_TIMEOUT:
-  OPSMAN_PASSPHRASE: 
 
 run:
   path: pcf-pipelines/tasks/export-opsmgr-settings/task.sh

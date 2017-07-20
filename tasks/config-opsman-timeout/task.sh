@@ -1,6 +1,6 @@
 #!/bin/bash
-apt-get update -y
-apt-get install ssh expect -y
+#apt-get update -y
+apt-get install ssh expect curl -y
 
 /usr/bin/expect << EOD
 set timeout 50

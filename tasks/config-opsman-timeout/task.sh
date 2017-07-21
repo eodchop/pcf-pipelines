@@ -39,7 +39,9 @@ printf "Waiting for %s to come up" "$OPSMAN_URI"
   done
 printf '\n'
 
-curl "https://example.com/api/v0/unlock" \ 
-    -X PUT \ 
-    -H "Content-Type: application/json" \ 
-    -d '{"passphrase": "$OPSMAN_PASSPHRASE"}'
+curl -k "https://$OPSMAN_URI/api/v0/unlock" \
+     -X PUT \
+     -H "Content-Type: application/json" \
+     -d '{"passphrase" : '"\"$OPSMAN_PASSPHRASE\""'}'
+~
+

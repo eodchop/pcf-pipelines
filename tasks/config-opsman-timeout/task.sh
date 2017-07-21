@@ -43,5 +43,3 @@ curl -k "https://$OPSMAN_URI/api/v0/unlock" \
      -X PUT \
      -H "Content-Type: application/json" \
      -d '{"passphrase" : '"\"$OPSMAN_PASSPHRASE\""'}'
-~
-

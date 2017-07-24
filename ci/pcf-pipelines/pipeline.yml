@@ -239,6 +239,14 @@ jobs:
         <<: *atc_creds
       file: pcf-pipelines/ci/tasks/set_pipeline.yml
 
+    - task: set-unpack-pcf-pipelines-combined
+      params:
+        PIPELINE_PARAMS: {{unpack_pcf_pipelines_combined_params}}
+        PIPELINE_NAME: unpack-pcf-pipelines-combined
+        PIPELINE_PATH: release/pcf-pipelines/unpack-pcf-pipelines-combined/pipeline.yml
+        <<: *atc_creds
+      file: pcf-pipelines/ci/tasks/set_pipeline.yml
+
 - name: publish-release
   serial_groups: [version]
   plan:
@@ -285,10 +293,12 @@ jobs:
         outputs:
         - name: notification-text
         run:
-          path: sh
+          path: bash
           args:
-          - -ce
+          - -c
           - |
+            set -eu
+
             release_id=$(cat pivnet-release/metadata.json | jq .Release.ID)
             cat > notification-text/text <<EOF
               Deployed pcf-pipelines final release to https://network.pivotal.io/products/pcf-automation#/releases/$release_id

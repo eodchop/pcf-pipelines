@@ -296,7 +296,7 @@ jq \
      ".properties.route_services": {
         "value": "enable"
       },
-      ".properties.route_services.enable.ignore_ssl_cert_verification: {
+      ".properties.route_services.enable.ignore_ssl_cert_verification": {
         "value": $ignore_ssl_cert
       }
     }

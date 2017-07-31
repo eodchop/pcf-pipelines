@@ -1,10 +1,6 @@
 #!/bin/bash
 
 set -eu
-script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source $script_dir/configure_product.sh
-configure_product
-
 chmod +x tool-om/om-linux
 
 CMD=./tool-om/om-linux
@@ -404,4 +400,36 @@ EOF
 fi
 
 $CMD -t https://$OPS_MGR_HOST -u $OPS_MGR_USR -p $OPS_MGR_PWD -k configure-product -n cf -p "$CF_SSL_TERM_PROPERTIES"
->>>>>>> 0aec2d0fda4f1143b9bdb081da9b7088abaeec95
+
+if [[ ! -z "$MYSQL_BACKUPS" ]]; then
+
+	echo "Configuraing S3 in ERT..."
+
+	CF_MYSQL_BACKUP_PROPERTIES=$(cat <<-EOF
+{
+     ".properties.mysql_backups": {
+        "value": "s3"
+     },
+      ".properties.mysql_backups.s3.endpoint_url":  {
+              "value": $mysql_backups_s3_endpoint_url
+      },
+            ".properties.mysql_backups.s3.bucket_name":  {
+        "value": $mysql_backups_s3_bucket_name
+	      },
+      ".properties.mysql_backups.s3.bucket_path":  {
+              "value": $mysql_backups_s3_bucket_path
+      },
+            ".properties.mysql_backups.s3.access_key_id":  {
+        "value": $mysql_backups_s3_access_key_id
+	      },
+      ".properties.mysql_backups.s3.secret_access_key":  {
+        "value": $mysql_backups_s3_secret_access_key
+      },
+      ".properties.mysql_backups.s3.cron_schedule":  {
+        "value": $mysql_backups_s3_cron_schedule
+      }
+}
+EOF
+)
+
+$CMD -t https://$OPS_MGR_HOST -u $OPS_MGR_USR -p $OPS_MGR_PWD -k configure-product -n cf -p "$CF_MYSQL_BACKUP_PROPERTIES"

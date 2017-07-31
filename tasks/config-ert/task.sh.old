@@ -72,9 +72,6 @@ CF_PROPERTIES=$(cat <<-EOF
   ".properties.system_blobstore": {
     "value": "internal"
   },
-  ".properties.mysql_backups": {
-    "value": "$MYSQL_BACKUPS"
-  },
   ".uaa.service_provider_key_credentials": {
     "value": {
      "private_key_pem": "$SERVICE_PROVIDER_KEY",
@@ -394,13 +391,13 @@ fi
 
 $CMD -t https://$OPS_MGR_HOST -u $OPS_MGR_USR -p $OPS_MGR_PWD -k configure-product -n cf -p "$CF_SSL_TERM_PROPERTIES"
 
-if [[ "$MYSQL_BACKUPS" == s3 ]]; then
+if [[ "$MYSQL_BACKUPS" == "s3" ]]; then
 
 	echo "Configuraing S3 in ERT..."
 
 	CF_MYSQL_BACKUP_PROPERTIES=$(cat <<-EOF
 {
-     ".properties.mysql_backups": {
+    ".properties.mysql_backups": {
      "value": "s3"
     },
      ".properties.mysql_backups.s3.endpoint_url":  {

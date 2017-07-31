@@ -120,4 +120,4 @@ inputs:
   - name: pcf-pipelines
 
 run:
-  path: pcf-pipelines/tasks/config-ert/task.sh.old
+  path: pcf-pipelines/tasks/config-ert/task.sh

@@ -401,26 +401,26 @@ if [[ ! -z "$MYSQL_BACKUPS" ]]; then
 	CF_MYSQL_BACKUP_PROPERTIES=$(cat <<-EOF
 {
      ".properties.mysql_backups": {
-        "value": "s3"
-     },
-      ".properties.mysql_backups.s3.endpoint_url":  {
-              "value": $mysql_backups_s3_endpoint_url
-      },
-            ".properties.mysql_backups.s3.bucket_name":  {
-        "value": $mysql_backups_s3_bucket_name
-	      },
-      ".properties.mysql_backups.s3.bucket_path":  {
-              "value": $mysql_backups_s3_bucket_path
-      },
-            ".properties.mysql_backups.s3.access_key_id":  {
-        "value": $mysql_backups_s3_access_key_id
-	      },
-      ".properties.mysql_backups.s3.secret_access_key":  {
-        "value": $mysql_backups_s3_secret_access_key
-      },
-      ".properties.mysql_backups.s3.cron_schedule":  {
-        "value": $mysql_backups_s3_cron_schedule
-      }
+     "value": "s3"
+    },
+     ".properties.mysql_backups.s3.endpoint_url":  {
+     "value": $MYSQL_BACKUPS_S3_ENDPOINT_URL
+    },
+     ".properties.mysql_backups.s3.bucket_name":  {
+     "value": $MYSQL_BACKUPS_S3_BUCKET_NAME
+    },
+     ".properties.mysql_backups.s3.bucket_path":  {
+     "value": $MYSQL_BACKUPS_S3_BUCKET_PATH
+    },
+     ".properties.mysql_backups.s3.access_key_id":  {
+     "value": $MYSQL_BACKUPS_S3_ACCESS_KEY_ID
+    },
+     ".properties.mysql_backups.s3.secret_access_key":  {
+     "value": $MYSQL_BACKUPS_S3_SECRET_ACCESS_KEY
+    },
+     ".properties.mysql_backups.s3.cron_schedule":  {
+     "value": $MYSQL_BACKUPS_S3_CRON_SCHEDULE
+    }
 }
 EOF
 )

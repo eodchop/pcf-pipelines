@@ -82,7 +82,7 @@ PRODUCT_PROPERTIES=$(cat <<-EOF
     "value": "$SYSLOG_HOST"
   },
   ".properties.syslog.enabled.port": {
-   "value": "$SYSLOG_PORT"
+   "value": $SYSLOG_PORT
   }
 }
 EOF

@@ -1,5 +1,6 @@
 #!/bin/bash -e
-set -xe
+
+set -x
 
 #mv tool-om/om-linux-* tool-om/om-linux
 chmod +x tool-om/om-linux

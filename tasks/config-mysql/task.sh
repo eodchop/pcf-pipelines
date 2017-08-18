@@ -74,7 +74,7 @@ PRODUCT_PROPERTIES=$(cat <<-EOF
     "value": "enabled"
   },
   ".properties.syslog.enabled.address": {
-    "value": $SYSLOG_HOST
+    "value": "$SYSLOG_HOST"
   },
   ".properties.syslog.enabled.port": {
     "value": $SYSLOG_PORT

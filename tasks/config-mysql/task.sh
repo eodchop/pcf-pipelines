@@ -129,22 +129,22 @@ EOF
 
 $CMD -t https://$OPS_MGR_HOST -u $OPS_MGR_USR -p $OPS_MGR_PWD -k configure-product -n $PRODUCT_NAME -p "$PRODUCT_PROPERTIES" -pn "$PRODUCT_NETWORK_CONFIG" -pr "$PRODUCT_RESOURCE_CONFIG"
 
-SYSLOG_PROPERTIES=$(cat<<-EOF
-{
-  ".properties.syslog": {
-      "value": "enabled"
-  },
-  ".properties.syslog.enabled.address": {
-    "value": "$SYSLOG_HOST"
-  },
-  ".properties.syslog.enabled.port": {
-   "value": $SYSLOG_PORT
-  }
-}
-EOF
-)
- 
-$CMD -t https://$OPS_MGR_HOST -u $OPS_MGR_USR -p $OPS_MGR_PWD -k configure-product -n $PRODUCT_NAME -p "$SYSLOG_PROPERTIES"
+#SYSLOG_PROPERTIES=$(cat<<-EOF
+#{
+#  ".properties.syslog": {
+#      "value": "enabled"
+#  },
+#  ".properties.syslog.enabled.address": {
+#    "value": "$SYSLOG_HOST"
+#  },
+#  ".properties.syslog.enabled.port": {
+#   "value": $SYSLOG_PORT
+#  }
+#}
+#EOF
+#)
+# 
+#$CMD -t https://$OPS_MGR_HOST -u $OPS_MGR_USR -p $OPS_MGR_PWD -k configure-product -n $PRODUCT_NAME -p "$SYSLOG_PROPERTIES"
 
 if [[ "$BACKUP_ENABLE" == "disable" ]]; then
 echo "Terminating SSL at the gorouters and using self signed/provided certs..."

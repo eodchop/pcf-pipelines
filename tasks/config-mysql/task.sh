@@ -63,11 +63,11 @@ PRODUCT_PROPERTIES=$(cat <<-EOF
   ".properties.backups.scp.destination": {
     "value": "$BACKUP_SCP_DESTINATION"
   },
-  ".properties.backups.scp.scp_key": {
+  "tproperties.backups.scp.scp_key": {
     "value": "$BACKUP_SCP_KEY"
   },
   ".properties.backups.scp.port": {
-    "value": $BACKUP_SCP_PORT
+    "value": "$BACKUP_SCP_PORT"
   },
   ".proxy.static_ips": {
     "value": null
@@ -75,15 +75,15 @@ PRODUCT_PROPERTIES=$(cat <<-EOF
   ".cf-mysql-broker.bind_hostname": {
     "value": null
   },
-    ".properties.syslog": {
-      "value": "enabled",
-    },
-    ".properties.syslog.enabled.address": {
-      "value": $SYSLOG_HOST,
-    },
-    ".properties.syslog.enabled.port": {
-      "value": $SYSLOG_PORT,
-    }
+  ".properties.syslog": {
+      "value": "enabled"
+  },
+  ".properties.syslog.enabled.address": {
+    "value": "$SYSLOG_HOST"
+  },
+  ".properties.syslog.enabled.port": {
+   "value": "$SYSLOG_PORT"
+  }
 }
 EOF
 )

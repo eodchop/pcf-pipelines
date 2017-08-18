@@ -75,15 +75,6 @@ PRODUCT_PROPERTIES=$(cat <<-EOF
   ".cf-mysql-broker.bind_hostname": {
     "value": null
   }
-#  ".properties.syslog": {
-#      "value": "enabled"
-#  },
-#  ".properties.syslog.enabled.address": {
-#    "value": "$SYSLOG_HOST"
-#  },
-#  ".properties.syslog.enabled.port": {
-#   "value": $SYSLOG_PORT
-#  }
 }
 EOF
 )

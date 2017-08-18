@@ -54,7 +54,7 @@ cf_network=$(
 )
 
 cf_resources=$(
-  set +eux
+  set +e
   read -d'%' -r input <<EOF
   {
     "backup-prepare": $BACKUP_PREPARE_INSTANCES,
@@ -84,7 +84,7 @@ cf_resources=$(
   }
   %
 EOF
-  set -eux
+  set -e
 
   echo "$input" | jq \
     'map_values(. = {

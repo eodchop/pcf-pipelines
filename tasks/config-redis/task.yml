@@ -25,6 +25,7 @@ params:
   BACKUPS_CRON_SCHEDULE:
   DISABLE_TLS:  
   SERVICE_NETWORK:
+  SMALL_PLAN_STATUS:
 
 inputs:
   - name: pcf-pipelines

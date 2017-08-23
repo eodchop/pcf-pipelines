@@ -45,7 +45,7 @@ PROPERTIES=$(cat <<-EOF
       "value": $SYSLOG_PORT
     },
     ".properties.small_plan_selector": {
-       "value": "$SMALL_PLAN_STATUS",
+       "value": "$SMALL_PLAN_STATUS"
     },
     ".properties.backups_selector": {
       "value": "SCP Backups"

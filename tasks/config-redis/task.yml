@@ -24,6 +24,7 @@ params:
   BACKUPS_SCP_TIMEOUT:
   BACKUPS_CRON_SCHEDULE:
   DISABLE_TLS:  
+  SERVICE_NETWORK:
 
 inputs:
   - name: pcf-pipelines

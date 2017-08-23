@@ -26,6 +26,8 @@ params:
   DISABLE_TLS:  
   SERVICE_NETWORK:
   SMALL_PLAN_STATUS:
+  MEDIUM_PLAN_STATUS:
+  LARGE_PLAN_STATUS:
 
 inputs:
   - name: pcf-pipelines

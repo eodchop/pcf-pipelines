@@ -27,6 +27,7 @@ params:
   RABBITMQ_PW:
   SYSLOG_HOST:
   SYSLOG_PORT:  
+  SERVICE_NETWORK:
 
 inputs:
   - name: pcf-pipelines

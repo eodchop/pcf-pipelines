@@ -28,6 +28,9 @@ NETWORK=$(cat <<-EOF
   ],
   "network": {
     "name": "$NETWORK_NAME"
+  },
+  "service_network": {
+    "name": "$SERVICE_NETWORK"
   }
 }
 EOF

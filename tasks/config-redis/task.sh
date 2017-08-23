@@ -30,7 +30,7 @@ NETWORK=$(cat <<-EOF
     "name": "$NETWORK_NAME"
   },
   "service_network": {
-  "name": "$SERVICE_NETWORK"
+    "name": "$SERVICE_NETWORK"
   }
 }
 EOF
@@ -47,9 +47,6 @@ PROPERTIES=$(cat <<-EOF
     ".properties.backups_selector": {
       "value": "SCP Backups"
     },
-    #".properties.metrics_disable_etcd_tls": {
-    #  "value": "$DISABLE_TLS"
-    #},
     ".properties.backups_selector.scp.server": {
       "value": "$BACKUPS_SCP_HOST"
     },

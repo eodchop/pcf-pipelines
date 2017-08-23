@@ -44,9 +44,9 @@ PROPERTIES=$(cat <<-EOF
     ".properties.backups_selector": {
       "value": "SCP Backups"
     },
-    ".properties.metrics_disable_etcd_tls": {
-      "value": "$DISABLE_TLS"
-    },
+    #".properties.metrics_disable_etcd_tls": {
+    #  "value": "$DISABLE_TLS"
+    #},
     ".properties.backups_selector.scp.server": {
       "value": "$BACKUPS_SCP_HOST"
     },

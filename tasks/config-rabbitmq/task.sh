@@ -72,9 +72,9 @@ PROPERTIES=$(cat <<-EOF
     ".rabbitmq-server.config": {
       "value": null
     },
-    ".properties.metrics_tls_disabled": {
-      "value": false
-    },
+    #".properties.metrics_tls_disabled": {
+    #  "value": false
+    #},
     ".properties.syslog_address": {
       "value": "$SYSLOG_HOST"
     },

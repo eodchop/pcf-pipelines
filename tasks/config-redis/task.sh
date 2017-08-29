@@ -1,5 +1,6 @@
 #!/bin/bash -e
 
+set -x
 
 #mv tool-om/om-linux-* tool-om/om-linux
 chmod +x tool-om/om-linux
@@ -39,11 +40,17 @@ EOF
 
 PROPERTIES=$(cat <<-EOF
 {
-    ".properties.syslog_address": {
+   ".properties.syslog_selector": {
+      "value": "Yes"
+    },
+    ".properties.syslog_selector.active.syslog_address": {
       "value": "$SYSLOG_HOST"
     },
-    ".properties.syslog_port": {
+    ".properties.syslog_selector.active.syslog_port": {
       "value": $SYSLOG_PORT
+    },
+    ".properties.syslog_selector.active.syslog_transport": {
+      "value": "tcp"
     },
     ".properties.small_plan_selector": {
        "value": "$SMALL_PLAN_STATUS"

@@ -79,25 +79,25 @@ PROPERTIES=$(cat <<-EOF
       "value": null
     },
    ".on-demand-broker.enable_single_node_plan": {
-      "value": true,
+      "value": true
     },
     ".on-demand-broker.plan_name": {
-      "value": "solo",
+      "value": "solo"
     },
     ".on-demand-broker.plan_description": {
-      "value": "Single node RabbitMQ dedicated instance",
+      "value": "Single node RabbitMQ dedicated instance"
     },
     ".on-demand-broker.plan_features": {
-      "value": "RabbitMQ 3.6.9",
+      "value": "RabbitMQ 3.6.9"
     },
     ".on-demand-broker.solo_plan_instance_quota": {
-      "value": 0,
+      "value": 0
     },
     ".on-demand-broker.global_service_instance_quota": {
-      "value": 20,
+      "value": 20
     },
     ".on-demand-broker.persistent_disk_type": {
-      "value": "5120",
+      "value": "5120"
     },
     ".on-demand-broker.az_placement": {
       "value": [
@@ -107,10 +107,10 @@ PROPERTIES=$(cat <<-EOF
       ],
     },
     ".on-demand-broker.rmq_vm_type": {
-      "value": "small",
+      "value": "small"
     },
     ".on-demand-broker.vm_extensions": {
-      "value": null,
+      "value": null
     },
     ".properties.syslog_address": {
       "value": "$SYSLOG_HOST"

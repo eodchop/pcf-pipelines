@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-set -x
-
 #mv tool-om/om-linux-* tool-om/om-linux
 chmod +x tool-om/om-linux
 CMD=./tool-om/om-linux

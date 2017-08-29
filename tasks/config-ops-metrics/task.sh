@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-set -xe
-
 #mv tool-om/om-linux-* tool-om/om-linux
 chmod +x tool-om/om-linux
 CMD=./tool-om/om-linux
@@ -59,7 +57,7 @@ RESOURCES=$(cat <<-EOF
     "instance_type": {"id": "automatic"},
     "instances" : 1
   },
-  "opentsdb-firehose-nozzle": {
+  "jmx-firehose-nozzle"": {
     "instance_type": {"id": "automatic"},
     "instances" : 1
   }

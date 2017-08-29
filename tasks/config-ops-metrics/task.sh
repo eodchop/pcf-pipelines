@@ -50,19 +50,3 @@ PROPERTIES=$(cat <<-EOF
 }
 EOF
 )
-
-RESOURCES=$(cat <<-EOF
-{
-  "maximus": {
-    "instance_type": {"id": "automatic"},
-    "instances" : 1
-  },
-  "jmx-firehose-nozzle": {
-    "instance_type": {"id": "automatic"},
-    "instances" : 1
-  }
-}
-EOF
-)
-
-$CMD -t https://$OPS_MGR_HOST -u $OPS_MGR_USR -p $OPS_MGR_PWD -k configure-product -n $PRODUCT_NAME -p "$PROPERTIES" -pn "$NETWORK" -pr "$RESOURCES"

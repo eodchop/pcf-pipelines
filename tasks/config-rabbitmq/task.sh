@@ -80,7 +80,7 @@ PROPERTIES=$(cat <<-EOF
     ".rabbitmq-server.config": {
       "value": null
     },
-   ".on-demand-broker.enable_single_node_plan": {
+    ".on-demand-broker.enable_single_node_plan": {
       "value": true
     },
     ".on-demand-broker.plan_name": {

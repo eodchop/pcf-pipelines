@@ -57,7 +57,7 @@ RESOURCES=$(cat <<-EOF
     "instance_type": {"id": "automatic"},
     "instances" : 1
   },
-  "jmx-firehose-nozzle"": {
+  "jmx-firehose-nozzle": {
     "instance_type": {"id": "automatic"},
     "instances" : 1
   }

@@ -47,10 +47,10 @@ PROPERTIES=$(cat <<-EOF
       "value": $SYSLOG_PORT
     },
     ".properties.metrics_polling_interval": {
-      "value": 30,
+      "value": 30
     },
     ".properties.syslog_transport": {
-      "value": "TCP",
+      "value": "TCP"
     },
     ".properties.small_plan_selector": {
        "value": "$SMALL_PLAN_STATUS"

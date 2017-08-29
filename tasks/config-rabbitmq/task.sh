@@ -60,7 +60,7 @@ PROPERTIES=$(cat <<-EOF
       }
     },
     ".properties.disk_alarm_threshold": {
-      "value": "mem_relative_1_0",
+      "value": "mem_relative_1_0"
     },
     ".rabbitmq-server.ssl_cacert": {
       "value": null

@@ -103,9 +103,7 @@ PROPERTIES=$(cat <<-EOF
     },
     ".on-demand-broker.az_placement": {
       "value": [
-        "AZ1",
-        "AZ2",
-        "AZ3"
+         {"name":"AZ1"},{"name":"AZ2"},{"name":"AZ3"}
       ],
     },
     ".on-demand-broker.rmq_vm_type": {

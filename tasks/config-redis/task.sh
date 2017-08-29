@@ -40,17 +40,17 @@ EOF
 
 PROPERTIES=$(cat <<-EOF
 {
-   ".properties.syslog_selector": {
-      "value": "Yes"
-    },
-    ".properties.syslog_selector.active.syslog_address": {
+    ".properties.syslog_address": {
       "value": "$SYSLOG_HOST"
     },
-    ".properties.syslog_selector.active.syslog_port": {
+    ".properties.syslog_port": {
       "value": $SYSLOG_PORT
     },
-    ".properties.syslog_selector.active.syslog_transport": {
-      "value": "tcp"
+    ".properties.metrics_polling_interval": {
+      "value": 30,
+    },
+    ".properties.syslog_transport": {
+      "value": "TCP",
     },
     ".properties.small_plan_selector": {
        "value": "$SMALL_PLAN_STATUS"

@@ -40,6 +40,9 @@ EOF
 
 PROPERTIES=$(cat <<-EOF
 {
+    ".redis-on-demand-broker.service_instance_limit": {
+      "value": 20,
+    },
     ".properties.syslog_address": {
       "value": "$SYSLOG_HOST"
     },

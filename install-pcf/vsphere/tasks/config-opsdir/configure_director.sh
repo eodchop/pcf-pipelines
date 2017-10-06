@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 function configure_director () {
 
 iaas_configuration=$(cat <<-EOF

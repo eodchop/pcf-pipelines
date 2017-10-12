@@ -218,6 +218,8 @@ jq \
   --arg ldap_last_name_attr "$LAST_NAME_ATTR" \
   --arg saml_cert_pem "$saml_cert_pem" \
   --arg saml_key_pem "$saml_key_pem" \
+  --arg mysql_proxy_static_ips: "$MYSQL_PROXY_STATIC_IPS" \
+  --arg mysql_proxy_service_hostname: "$MYSQL_PROXY_SERVICE_HOSTNAME" \
   --arg mysql_backups "$MYSQL_BACKUPS" \
   --arg mysql_backups_s3_endpoint_url "$MYSQL_BACKUPS_S3_ENDPOINT_URL" \
   --arg mysql_backups_s3_bucket_name "$MYSQL_BACKUPS_S3_BUCKET_NAME" \
@@ -275,6 +277,12 @@ jq \
     },
     ".mysql_monitor.recipient_email": {
       "value": $mysql_monitor_email
+    },
+    ".mysql_proxy.static_ips": {
+      "value": $mysql_proxy_static_ips
+    },
+    ".mysql_proxy.service_hostname": {
+      "value": $mysql_proxy_service_hostname
     },
     ".tcp_router.static_ips": {
       "value": $tcp_router_static_ips
